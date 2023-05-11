@@ -1,0 +1,38 @@
+npx create-react-app newsapp in power shell
+rcc 
+
+difference between functional and classbased
+in class based there is render() fun in app.js
+in functional we have no render() function.
+
+little syntax difference in props, state.
+
+eg:
+
+no need to write let c='john'. can write directly,
+
+c = 'john' must be written before render function.
+
+inside return, hello {this.c}
+
+
+// when you need to creat a constructor.   this is done for state
+
+normally: 
+
+constructor(){
+
+}
+// will give you an error.
+
+
+do this:
+need to call super call constructor.
+
+constructor(){
+    super();
+    console.log('This is a constructor'); // this will be displayed 3 times since 3 newsitem and was written in newsitem
+    // this are your state
+    article: this.articles,
+    loading: false
+}
