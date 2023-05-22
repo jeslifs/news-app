@@ -43,3 +43,8 @@ to get the articles automatically, have to write in News.js
 {this.state.articles.map()} map is a higher order array method and uses arrow function
 
 {this.state.article.map((element)=>{console.log(element)})} must have return inside arrow function and can iterate from there. but requires a unique key as map is used. key must be present in the div that is returned.
+
+
+    to fetch the articles from the api.
+
+
