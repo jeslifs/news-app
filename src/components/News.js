@@ -57,18 +57,24 @@ export class News extends Component {
     return (
       <div className='container my-3'>
         <h2>JSF - Top Headlines</h2>
-        {this.state.article.map(()=>{})}
+        {/* {this.state.article.map((element)=>{console.log(element)})} */}
         <div className="row">
           {/* need to get the articles auto using iteration */}
-            <div className="col-md-4">
+            {/* <div className="col-md-4">
                 <NewsItem title = 'myTitle' description ='Hello mf' imageUrl="https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg" newsUrl='todo' />
-            </div>
+            </div> */}
             {/* <div className="col-md-4">
                 <NewsItem title='myTitle' description='Hello mf'/>
             </div>
             <div className="col-md-4">
                 <NewsItem title='myTitle' description='Hello mf'/>
             </div> */}
+
+            {this.state.article.map((element)=>{
+              return (<div className="col-md-4" key={element.url}>
+                      <NewsItem  title = {element.title} description = {element.description} imageUrl = {element.urlToImage} newsUrl='todo' />
+                      </div>)
+            })}
         </div>
       </div>
     )
