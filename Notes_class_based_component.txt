@@ -36,3 +36,8 @@ constructor(){
     article: this.articles,
     loading: false
 }
+
+
+to get the articles automatically, have to write in News.js
+{this.state.articles} these are all the articles 
+{this.state.articles.map()} map is a higher order array method and uses arrow function
