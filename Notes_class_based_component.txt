@@ -47,4 +47,8 @@ to get the articles automatically, have to write in News.js
 
     to fetch the articles from the api.
 
+dont have write in a constructor but in a componentDidMount() its a life cycle method.
 
+        1st the constructor will run, then render, the componentDidMount.
+
+async functionn can wait in its own body, for some promises to come true.
