@@ -63,6 +63,10 @@ export class News extends Component {
       console.log(parsedData);
       this.setState({article: parsedData.articles});
     }
+
+
+    // onchonge function.
+    
   render() {
     return (
       <div className='container my-3'>
@@ -85,6 +89,10 @@ export class News extends Component {
                       <NewsItem  title = {element.title?element.title.slice(0, 45):''} description = {element.description?element.description.slice(0, 88):''} imageUrl = {element.urlToImage} newsUrl={element.url} />
                       </div>)
             })}
+        </div>
+        <div className="container d-flex justify-content-between">
+          <button type="button" class="btn btn-info" onclick={handlePrevClick}>&larr;Previous</button>
+          <button type="button" class="btn btn-info" onclick={handleNextClick}>Next&rarr;</button>
         </div>
       </div>
     )
