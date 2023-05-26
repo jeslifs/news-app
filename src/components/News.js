@@ -66,7 +66,15 @@ export class News extends Component {
 
 
     // onchonge function.
-    
+    handleNextClick = () =>{
+      console.log('next');
+    }
+
+    handlePrevClick = () =>{
+      console.log('pre');
+    }
+
+
   render() {
     return (
       <div className='container my-3'>
@@ -91,8 +99,8 @@ export class News extends Component {
             })}
         </div>
         <div className="container d-flex justify-content-between">
-          <button type="button" class="btn btn-info" onclick={handlePrevClick}>&larr;Previous</button>
-          <button type="button" class="btn btn-info" onclick={handleNextClick}>Next&rarr;</button>
+          <button disabled={this.state.page <= 1} type="button" className="btn btn-info" onClick={this.handlePrevClick}>&larr;Previous</button>
+          <button type="button" className="btn btn-info" onClick={this.handleNextClick}>Next&rarr;</button>
         </div>
       </div>
     )
