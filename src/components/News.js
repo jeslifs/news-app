@@ -110,7 +110,8 @@ export class News extends Component {
   render() {
     return (
       <div className='container my-3'>
-        <h2>JSF - Top Headlines</h2>
+        <h1 className="text-center">JSF - Top Headlines</h1>
+        
         {/* {this.state.article.map((element)=>{console.log(element)})} */}
         <div className="row">
           {/* need to get the articles auto using iteration */}
