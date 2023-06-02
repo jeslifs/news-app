@@ -51,7 +51,9 @@ export class News extends Component {
         this.state = {
             // article: this.articles,
             article: [],
-            loading: false
+            loading: false,
+            // for page
+            page: 1
         }
     }
 
