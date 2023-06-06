@@ -1,6 +1,7 @@
 //rce
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
+import Spinner from './Spinner';
 
 export class News extends Component {
     // articles = [
@@ -111,7 +112,7 @@ export class News extends Component {
     return (
       <div className='container my-3'>
         <h1 className="text-center">JSF - Top Headlines</h1>
-        
+          <Spinner />
         {/* {this.state.article.map((element)=>{console.log(element)})} */}
         <div className="row">
           {/* need to get the articles auto using iteration */}
