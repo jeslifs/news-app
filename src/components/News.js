@@ -61,21 +61,27 @@ export class News extends Component {
     // componentDidMount
     async componentDidMount(){
       let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=d85b2a0c593e4db491a4b90e849263c3&pageSize=${this.props.pageSize}`;
+      this.setState({loading:true});
       let data = await fetch(url);
       let parsedData = await data.json();
       console.log(parsedData);
-      this.setState({article: parsedData.articles, totalResults: parsedData.totalResults});
+      this.setState({article: parsedData.articles,
+         totalResults: parsedData.totalResults,
+        loading: false
+      });
     }
 
 
     // onchonge function.
     handleNextClick = async () =>{
       console.log('next');
-      if(this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize)){
+      // written new logic
+      if(!(this.state.page + 1 > Math.ceil(this.state.totalResults/this.props.pageSize))){
 
-      }
-      else{
+      // }
+      // else{
         let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=d85b2a0c593e4db491a4b90e849263c3&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+        this.setState({loading:true});
         let data = await fetch(url);
         let parsedData = await data.json();
         console.log(parsedData);
@@ -85,7 +91,8 @@ export class News extends Component {
 
         this.setState({
           page: this.state.page + 1,
-          article: parsedData.articles
+          article: parsedData.articles,
+          loading:false
         })
         }      
     }
@@ -94,6 +101,7 @@ export class News extends Component {
       console.log('pre');
 
       let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=d85b2a0c593e4db491a4b90e849263c3&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`;
+      this.setState({loading:true});
       let data = await fetch(url);
       let parsedData = await data.json();
       console.log(parsedData);
@@ -103,7 +111,8 @@ export class News extends Component {
 
       this.setState({
         page: this.state.page - 1,
-        article: parsedData.articles
+        article: parsedData.articles,
+        loading:false
       })
     }
 
@@ -112,7 +121,8 @@ export class News extends Component {
     return (
       <div className='container my-3'>
         <h1 className="text-center">JSF - Top Headlines</h1>
-          <Spinner />
+        {/* logic is if loading is true then show else no */}
+        {this.state.loading && <Spinner />}
         {/* {this.state.article.map((element)=>{console.log(element)})} */}
         <div className="row">
           {/* need to get the articles auto using iteration */}
@@ -125,8 +135,8 @@ export class News extends Component {
             <div className="col-md-4">
                 <NewsItem title='myTitle' description='Hello mf'/>
             </div> */}
-
-            {this.state.article.map((element)=>{
+            {/* if loading is not true then show news */}
+            {!this.state.loading && this.state.article.map((element)=>{
               return (<div className="col-md-4" key={element.url}>
                       <NewsItem  title = {element.title?element.title.slice(0, 45):''} description = {element.description?element.description.slice(0, 88):''} imageUrl = {element.urlToImage} newsUrl={element.url} />
                       </div>)
